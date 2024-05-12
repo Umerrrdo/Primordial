@@ -11,13 +11,13 @@ export default function Navbar() {
                     <div>
                         <ul className="flex">
                             <li>
-                                <a href="#" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">Home</a>
+                                <a href="/" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">Home</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">Encrypt</a>
+                                <a href="/encrypt" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">Encrypt</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">Decrypt</a>
+                                <a href="/decrypt" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">Decrypt</a>
                             </li>
                             <li>
                                 <a href="#" class="text-white px-4 text-lg font-medium bg-transparent hover:text-gray-500 transition-all">About</a>
