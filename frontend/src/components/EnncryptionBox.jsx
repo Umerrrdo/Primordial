@@ -14,7 +14,7 @@ export default function EncryptionBox() {
     const [modulus, setModulus] = useState("")
     const keyInputRef = useRef(null);
     const keyInputRef2 = useRef(null);
-    const [result,setResult] = useState(false);
+    const [result,setResult] = useState(true);
 
     const handleCopyClick = () => {
         const key = keyInputRef.current.value;
@@ -27,7 +27,7 @@ export default function EncryptionBox() {
         const key = keyInputRef2.current.value;
         navigator.clipboard.writeText(key);
         setIsCopied2(true);
-        setTimeout(() => setIsCopied(false), 2000); // Reset tooltip after 2 seconds
+        setTimeout(() => setIsCopied2(false), 2000); // Reset tooltip after 2 seconds
     };
 
 
@@ -188,12 +188,12 @@ export default function EncryptionBox() {
 
     return (
         <div className="flex justify-center">
-            <div className="bg-[#1A1A1A] w-[80rem] h-[43rem] px-4 rounded-lg my-10">
+            <div className="bg-[#1A1A1A] w-[80rem] h-[45rem] px-4 rounded-lg my-10">
+                        <h1 className="text-white text-[2rem] font-bold text-center  mt-6">Encryption</h1>
                 <div className="flex justify-between mx-12">
                     <div className="flex flex-col w-[30rem] h-[30rem] my-10">
-                        <h1 className="text-white text-[2rem] font-bold text-left  mt-6">Encryption</h1>
                         <textarea
-                            className="w-[30rem] h-[10.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none"
+                            className="w-[30rem] h-[14.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none"
                             placeholder="Enter your text here..."
                             onChange={(e) =>{handleTextChange(e)}}
                         ></textarea>
@@ -215,50 +215,52 @@ export default function EncryptionBox() {
                             </button>
                         </div>
                         {result && <>
-                        <div>
+                        <div className="">
                         <h1 className="text-white text-xl font-bold text-left  mt-6">Cipher Text</h1>
                             <textarea
                             value={cipherText}
-                                className="w-[30rem] h-[7.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none mt-4"
+                                className="w-[30rem] h-[4.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none mt-4"
                                 placeholder="Encrypted text will appear here..."
                             ></textarea>
                                 <div className="flex items-center w-full">
-
+                                <h1 className="text-white text-lg font-semibold text-left mr-7 w-full pb-3 mt-6">Private Key</h1>
                                 <input
                                     ref={keyInputRef}
                                     type="text"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full bg-[#2A2A2A]  mt-4 pl-2 text-white py-2 rounded "
                                     value={privateKey}
+                                    placeholder="Private Key"
                                     disabled
                                 />
                                 <button
                                     onClick={handleCopyClick}
-                                    className="btn btn-square ml-2"
+                                    className="btn btn-square ml-2 mt-3 font-semibold py-4 px-2 "
                                 >
                                     Copy
                                 </button>
                                 {isCopied && (
-                                    <span className="tooltip absolute right-[40rem]">Text copied</span>
+                                    <span className="tooltip absolute right-[50rem] font-semibold text-sm  ">Text copied</span>
                                 )}
                                 </div>
 
-                                <div className="flex items-center w-full">
-
+                                <div className="flex items-center w-full ">
+                                <h1 className="text-white text-lg font-semibold text-left mr-[9.2rem] pb-3 mt-6">Modulus</h1>
                                 <input
                                     ref={keyInputRef2}
                                     type="text"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered bg-[#2A2A2A] w-full mt-4 pl-2 text-white py-2 rounded "
+                                    placeholder="Modulus"
                                     value={modulus}
                                     disabled
                                 />
                                 <button
                                     onClick={handleCopyClick2}
-                                    className="btn btn-square ml-2"
+                                    className="btn btn-square ml-2 mt-3 font-semibold py-4 px-2 "
                                 >
                                     Copy
                                 </button>
                                 {isCopied2 && (
-                                    <span className="tooltip absolute right-[40rem]">Text copied</span>
+                                    <span className="tooltip absolute right-[50rem] font-semibold text-sm ">Text copied</span>
                                 )}
                                 </div>
                         </div>
