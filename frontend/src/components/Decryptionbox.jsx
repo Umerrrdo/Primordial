@@ -2,16 +2,31 @@ import React, { useState } from "react";
 
 export default function EncryptionBox() {
     const [selectedAlgorithm, setSelectedAlgorithm] = useState("rsa");
-
+    const [modulos, setModulos] = useState("");
+    const [privateKey, setPrivateKey] = useState("");
+    const [cipherText, setCipherText] = useState("");
 
     const handleAlgorithmChange = (e) => {
         setSelectedAlgorithm(e.target.value);
     }
     
+    const handleModulosChange = (e) => {
+        setModulos(e.target.value);
+    }
+
+    const handlePrivateKeyChange = (e) => {
+        setPrivateKey(e.target.value);
+    }
+
+    const handleCipherTextChange = (e) => {
+        setCipherText(e.target.value);
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission
+        
     };
 
 
@@ -24,6 +39,8 @@ export default function EncryptionBox() {
                         <textarea
                             className="w-[30rem] h-[10.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none"
                             placeholder="Enter your cipher text here..."
+                            value={cipherText}
+                            onChange={handleCipherTextChange}
                         ></textarea>
                         <div className="flex justify-end">
                             <select
@@ -50,11 +67,15 @@ export default function EncryptionBox() {
                             type="text"
                             className="w-full h-10 bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none my-2"
                             placeholder="Enter modulos"
+                            value={modulos}
+                            onChange={handleModulosChange}
                         />
                             <input
                             type="text"
                             className="w-full h-10 bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none my-2"
                             placeholder="Enter your private key"
+                            value={privateKey}
+                            onChange={handlePrivateKeyChange}
                         />
                             <button type="submit" className="bg-[#717171] px-4 text-white text-[12px] font-medium my-2 rounded-md h-[2.25rem] w-[6rem] ">
                                 Submit
