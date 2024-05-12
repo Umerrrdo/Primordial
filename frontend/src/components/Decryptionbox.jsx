@@ -1,31 +1,105 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function EncryptionBox() {
     const [selectedAlgorithm, setSelectedAlgorithm] = useState("rsa");
     const [modulos, setModulos] = useState("");
     const [privateKey, setPrivateKey] = useState("");
     const [cipherText, setCipherText] = useState("");
+    const [decryptedText, setDecryptedText] = useState("");
+    const [result, setResult] = useState(false);
 
     const handleAlgorithmChange = (e) => {
         setSelectedAlgorithm(e.target.value);
+        console.log(e.target.value);
     }
     
     const handleModulosChange = (e) => {
         setModulos(e.target.value);
+        console.log(e.target.value);
     }
 
     const handlePrivateKeyChange = (e) => {
         setPrivateKey(e.target.value);
+        console.log(e.target.value);
     }
 
     const handleCipherTextChange = (e) => {
         setCipherText(e.target.value);
+        console.log(e.target.value);
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         // Handle form submission
+        if (selectedAlgorithm === "rsa") {
+            try {
+                const response = await axios.post('http://localhost:5000/RSA/decrypt', {
+                    "cipherText":cipherText.toString(),
+                    "modulus": modulos.toString(),
+                    "privateKey": privateKey.toString(),
+                });
+                setDecryptedText(response.data.plain_text);
+                setResult(true)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    
+        }
+        else if (selectedAlgorithm === "rsa-3") {
+            try {
+                const response = await axios.post('http://localhost:5000/RSA3/decrypt', {
+                    "cipherText":cipherText.toString(),
+                    "modulus": modulos.toString(),
+                    "privateKey": privateKey.toString(),
+                });
+                setDecryptedText(response.data.plain_text);
+                setResult(true)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        }
+        else if (selectedAlgorithm === "rsa-4") {
+            try {
+                const response = await axios.post('http://localhost:5000/RSA4/decrypt', {
+                    "cipherText":cipherText.toString(),
+                    "modulus": modulos.toString(),
+                    "privateKey": privateKey.toString(),
+                });
+                setDecryptedText(response.data.plain_text);
+                setResult(true)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        }
+        else if (selectedAlgorithm === "rsa-5") {
+            try {
+                const response = await axios.post('http://localhost:5000/RSA3/decrypt', {
+                    "cipherText":cipherText.toString(),
+                    "modulus": modulos.toString(),
+                    "privateKey": privateKey.toString(),
+                });
+                setDecryptedText(response.data.plain_text);
+                setResult(true)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        }
+        else if (selectedAlgorithm === "rsa-6") {
+            try {
+                const response = await axios.post('http://localhost:5000/RSA/decrypt', {
+                    "cipherText":cipherText.toString(),
+                    "modulus": modulos.toString(),
+                    "privateKey": privateKey.toString(),
+                });
+                setDecryptedText(response.data.plain_text);
+                setResult(true)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        }
+        
         
     };
 
@@ -85,13 +159,16 @@ export default function EncryptionBox() {
                     
                     
                 </div>
+                {result && <>
                     <div className="absolute bottom-[3rem] left-[26rem]">
                         <h1 className="text-white text-xl font-bold text-center mt-6">Decrypted Text</h1>
                             <textarea
+                            value={decryptedText}
                                 className="w-[30rem] h-[7.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none mt-4"
                                 placeholder="Decrypted text will appear here..."
                             ></textarea>
                         </div>
+                        </>}
             </div>
             
         </div>
