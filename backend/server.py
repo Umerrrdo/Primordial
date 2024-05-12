@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import random
 
 app = Flask(__name__)
+CORS(app)
 
 # Efficient primality testing using Miller-Rabin algorithm
 # def is_prime(n, k=5):
@@ -89,6 +91,10 @@ def encrypt_route():
     e = data.get("publicKey")
     p = data.get("p")
     q = data.get("q")
+    p = int(p)
+    q = int(q)
+    e = int(e)
+    plain_text = int(plain_text)
     n = p * q
     phi_n = (p - 1) * (q - 1)
     d = mod_inverse(e, phi_n)
@@ -114,6 +120,11 @@ def encrypt3_route():
     p = data.get("p")
     q = data.get("q")
     r = data.get("r")
+    p = int(p)
+    q = int(q)
+    r = int(r)
+    e = int(e)
+    plain_text = int(plain_text)
     n = p * q * r
     z = n - 10
     f = (e * 2) + 1
@@ -145,6 +156,12 @@ def encrypt4_route():
     q = data.get("q")
     r = data.get("r")
     s = data.get("s")
+    p = int(p)
+    q = int(q)
+    r = int(r)
+    s = int(s)
+    e = int(e)
+    plain_text = int(plain_text)
     n = p * q * r * s
     z = n - 10
     f = (e * 2) + 1
