@@ -108,6 +108,9 @@ def decrypt_route():
     cipher_text = data.get("cipherText")
     d = data.get("privateKey")
     n = data.get("modulus")
+    cipher_text = int(cipher_text)
+    d = int(d)
+    n = int(n)
     plain_text = decrypt(cipher_text, d, n)
     return jsonify({"plain_text": plain_text}), 200
 
@@ -141,6 +144,9 @@ def decrypt3_route():
     cipher_text = data.get("cipherText")
     d = data.get("privateKey")
     n = data.get("modulus")
+    cipher_text = int(cipher_text)
+    d = int(d)
+    n = int(n)
     z = n - 10
     plain_text = (cipher_text ** d) % (z+10)
 
@@ -177,6 +183,9 @@ def decrypt4_route():
     cipher_text = data.get("cipherText")
     d = data.get("privateKey")
     n = data.get("modulus")
+    cipher_text = int(cipher_text)
+    d = int(d)
+    n = int(n)
     z = n - 10
     plain_text = (cipher_text ** d) % (z+10)
 
