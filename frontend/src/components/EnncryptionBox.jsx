@@ -40,10 +40,16 @@ export default function EncryptionBox() {
                 <input
                     key={i}
                     type="text"
-                    className="w-full h-10 bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none my-2"
+                    className="w-[550px] h-10 bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none my-2"
                     placeholder={`Field ${i + 1}`}
                 />
             );
+            <input
+                    key={i}
+                    type="text"
+                    className="w-full h-10 bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none my-2"
+                    placeholder={`Field ${i + 1}`}
+                />
         }
         return fields;
     };
@@ -75,10 +81,22 @@ export default function EncryptionBox() {
                                 Encrypt
                             </button>
                         </div>
-                        </div>    
+                        <div>
+                        <h1 className="text-white text-xl font-bold text-left  mt-6">Encryption Text</h1>
+                            <textarea
+                                className="w-[30rem] h-[7.5rem] bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none mt-4"
+                                placeholder="Encrypted text will appear here..."
+                            ></textarea>
+                        </div>
+                    </div>    
                         <div className="mt-24 flex flex-col">
-                        <form id="form" onSubmit={handleSubmit}>
+                        <form id="form" className="flex flex-col" onSubmit={handleSubmit}>
                             {renderInputFields()}
+                            <input
+                            type="text"
+                            className="w-full h-10 bg-[#2A2A2A] text-white p-4 rounded-xl focus:outline-none my-2"
+                            placeholder="Enter your public key"
+                        />
                             <button type="submit" className="bg-[#717171] px-4 text-white text-[12px] font-medium my-2 rounded-md h-[2.25rem] w-[6rem] ">
                                 Submit
                             </button>

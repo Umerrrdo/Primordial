@@ -1,13 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import EncryptionBox from './components/EnncryptionBox';
+import Encryption from './pages/Encryption';
 
 function App() {
   return (
     <div className="App">
-     <Home/>
+     <Encryption/>
     </div>
   );
 }
