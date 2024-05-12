@@ -85,7 +85,6 @@ def decrypt(cipher_text, d, n):
 @app.route("/RSA/encrypt", methods=["POST"])
 def encrypt_route():
     data = request.json
-    print(data)
     plain_text = data.get("plainText")
     e = data.get("publicKey")
     p = data.get("p")
@@ -103,9 +102,7 @@ def decrypt_route():
     cipher_text = data.get("cipherText")
     d = data.get("privateKey")
     n = data.get("modulus")
-    print(cipher_text, d, n)
     plain_text = decrypt(cipher_text, d, n)
-
     return jsonify({"plain_text": plain_text}), 200
 
 @app.route("/RSA3/encrypt", methods=["POST"])
