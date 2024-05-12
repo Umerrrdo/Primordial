@@ -14,7 +14,7 @@ export default function EncryptionBox() {
     const [modulus, setModulus] = useState("")
     const keyInputRef = useRef(null);
     const keyInputRef2 = useRef(null);
-    const [result,setResult] = useState(true);
+    const [result,setResult] = useState(false);
 
     const handleCopyClick = () => {
         const key = keyInputRef.current.value;
