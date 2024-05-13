@@ -5,7 +5,6 @@ import EncryptionBox from "../components/EnncryptionBox";
 export default function Encryption() {
     return (
         <div className="App">
-            <Navbar/>
             <EncryptionBox/>
         </div>
     );
