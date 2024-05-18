@@ -78,15 +78,20 @@ def private_key_selection(phi_n, e):
 
 # Encrypting data
 def encrypt(plain_text, e, n):
+    print(plain_text, e, n)
+    print(pow(plain_text,e,n))
     return pow(plain_text, e, n)
 
 # Decrypting data
 def decrypt(cipher_text, d, n):
+    print(cipher_text, d, n)
+    print(pow(cipher_text,d,n))
     return pow(cipher_text, d, n)
 
 @app.route("/RSA/encrypt", methods=["POST"])
 def encrypt_route():
     data = request.json
+    print(data)
     plain_text = data.get("plainText")
     e = data.get("publicKey")
     p = data.get("p")
@@ -95,6 +100,8 @@ def encrypt_route():
     q = int(q)
     e = int(e)
     plain_text = int(plain_text)
+
+    plain_text = 12
     n = p * q
     phi_n = (p - 1) * (q - 1)
     d = mod_inverse(e, phi_n)
